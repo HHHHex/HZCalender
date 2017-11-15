@@ -18,6 +18,7 @@ class HZCalenderContent: UIView {
     weak var delegate: HZCalenderContentDelegate? {
         didSet {
             let calendar = Calendar.current
+            /**初始化月份的符号*/
             let month = calendar.shortMonthSymbols[cur_year_month.month! - 1]
             delegate?.newPage(year: "\(cur_year_month.year!)", month: month)
             delegate?.newSelect(day: "\(select_day.year!)-\(select_day.month!)-\(select_day.day!)")
@@ -31,6 +32,7 @@ class HZCalenderContent: UIView {
             let label = UILabel()
             label.textAlignment = .center
             label.font = UIFont.systemFont(ofSize: 12)
+            /**周的符号*/
             label.text = Calendar.current.shortWeekdaySymbols[index]
             label.textColor = k_color_dark
             ary.append(label)
@@ -50,6 +52,7 @@ class HZCalenderContent: UIView {
             days_left = HZDayModel.creatDays(by: newValue.previousMonth())
             days_middle = HZDayModel.creatDays(by: newValue)
             days_right = HZDayModel.creatDays(by: newValue.nextMonth())
+            /**月份的符号*/
             let calendar = Calendar.current
             let month = calendar.shortMonthSymbols[newValue.month! - 1]
             delegate?.newPage(year: "\(newValue.year!)", month: month)
