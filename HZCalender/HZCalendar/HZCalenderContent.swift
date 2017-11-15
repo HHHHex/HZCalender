@@ -135,6 +135,9 @@ class HZCalenderContent: UIView {
         collectionM.frame = CGRect.init(x: width, y: 0, width: width, height: height)
         collectionR.frame = CGRect.init(x: width*2, y: 0, width: width, height: height)
         scrollView.setContentOffset(collectionM.frame.origin, animated: false)
+        collectionL.reloadData()
+        collectionM.reloadData()
+        collectionR.reloadData()
     }
     
     private func onCreat() {
@@ -228,7 +231,7 @@ extension HZCalenderContent: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.size.width
         let height = collectionView.frame.size.height
-        return CGSize.init(width: width / 7, height: height / 6)
+        return CGSize.init(width: width / 7 - 4, height: height / 6)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
