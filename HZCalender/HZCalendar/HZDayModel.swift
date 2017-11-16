@@ -8,12 +8,12 @@
 
 import UIKit
 
-struct HZDayModel {
+class HZDayModel {
     
     var isEnable: Bool = false
     var year_month_day: DateComponents = DateComponents()
     
-    static func creatDays(by components: DateComponents) -> [HZDayModel] {
+    class func creatDays(by components: DateComponents) -> [HZDayModel] {
         let calendar = Calendar.current
         let date = calendar.date(from: components)!
         //***总天数
@@ -36,7 +36,7 @@ struct HZDayModel {
         let past_total_days = calendar.range(of: .day, in: .month, for: date_pre_month)!.count
         var ary: [HZDayModel] = []
         for index in 0...42 {
-            var model = HZDayModel()
+            let model = HZDayModel()
             model.year_month_day.year = components.year
             model.year_month_day.month = components.month
             if (index < first_weekday) {// 上月
